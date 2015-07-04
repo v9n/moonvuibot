@@ -30,3 +30,23 @@ into corresponding method
 	message, _ := api.SendMessage(m)
 	fmt.Println("MMM = ", message)
 ```
+
+## Composer API (Pending)
+
+This API allows us to create an object of type of Telegram then we call:
+
+  * send
+  * forward
+  * set
+  * get
+
+
+Ideally, we do this:
+
+```
+  var m := composer.NewMessage()
+  api.Send(m)
+
+  var photo := composer.NewPhoto()
+  api.Send(photo)
+```
