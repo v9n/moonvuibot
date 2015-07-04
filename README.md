@@ -1,9 +1,9 @@
 # Moonvui bot
 
-A telegram API client implentationa and a bot that use it
+A telegram API client implentationa and a bot that uses it
 
 
-# API 
+# API
 
 
 ## Long polling async style
@@ -31,9 +31,10 @@ into corresponding method
 	fmt.Println("MMM = ", message)
 ```
 
-## Composer API (Pending)
+## Composer& Transport API (Pending)
 
-This API allows us to create an object of type of Telegram then we call:
+This API allows us to create an object of type of Telegram then we call
+`Transport` method
 
   * send
   * forward
@@ -45,8 +46,8 @@ Ideally, we do this:
 
 ```
   var m := composer.NewMessage()
-  api.Send(m)
+  api.Transport.Send(m)
 
   var photo := composer.NewPhoto()
-  api.Send(photo)
+  api.Transport.Send(photo)
 ```
