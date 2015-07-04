@@ -1,6 +1,7 @@
 package telegram
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -11,12 +12,6 @@ type (
 	Api struct {
 		config *Config
 	}
-	UpdateParam struct {
-		offset  int
-		limit   int
-		timeout int
-	}
-	UpdateHandler func([]*Update)
 )
 
 /*
@@ -48,6 +43,7 @@ func (api *Api) get(method string, option map[string]string) ([]byte, error) {
 		q.Add(k, v)
 	}
 
+	fmt.Println(api.buildUrl(method, option))
 	response, err := http.Get(api.buildUrl(method, option))
 	if err != nil {
 		return nil, err

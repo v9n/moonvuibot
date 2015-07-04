@@ -2,6 +2,7 @@ package telegram
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 )
 
@@ -13,18 +14,20 @@ These are method which map directly to API. Hopefully I can find a way to elimin
 ===============================================================================
 */
 
-func (api *Api) GetUpdates(handler UpdateHandler, option map[string]string) {
+func (api *Api) GetUpdates(option map[string]string) ([]*Update, error) {
 	jsonData, err := api.get("getUpdates", option)
 
 	if nil != err {
 		fmt.Println(err)
 	}
 	var r UpdateResult
+
+	fmt.Println(string(jsonData))
 	err = json.Unmarshal(jsonData, &r)
 	if r.Ok {
-		handler(r.Result)
+		return r.Result, nil
 	} else {
-		fmt.Println(string(jsonData))
+		return nil, errors.New(fmt.Sprintf("Failed to parse: %s", string(jsonData)))
 	}
 }
 

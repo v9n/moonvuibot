@@ -11,7 +11,7 @@ type UpdateResult struct {
 }
 
 type Update struct {
-	UpdateId int      `json:"update_id"`
+	UpdateId int64    `json:"update_id"`
 	Message  *Message `json:"message"`
 }
 
