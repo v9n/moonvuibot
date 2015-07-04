@@ -1,8 +1,13 @@
 package telegram
 
+type ApiResult struct {
+	Ok     bool   `json:"ok"`
+	Result string `json:"result"`
+}
+
 type UpdateResult struct {
-	Ok     bool     `json:"ok"`
-	Result []Update `json:"result"`
+	Ok     bool      `json:"ok"`
+	Result []*Update `json:"result"`
 }
 
 type Update struct {
@@ -12,9 +17,9 @@ type Update struct {
 
 type User struct {
 	Id        int
-	FirstName string
-	LastName  string
-	Username  string
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+	Username  string `json:"username"`
 }
 
 type GroupChat struct {
@@ -23,20 +28,20 @@ type GroupChat struct {
 }
 
 type PhotoSize struct {
-	FileId        string
+	FileId        string `json:"file_id"`
 	Width, Height int
-	FileSize      int
+	FileSize      int `json:"file_size"`
 }
 
 type Audio struct {
-	FileId   string
+	FileId   string `json:"file_id"`
 	Duration int
 	MimeType string
 	FileSize int
 }
 
 type Document struct {
-	FileId   string
+	FileId   string `json:"file_id"`
 	Thumb    *PhotoSize
 	FileName string
 	MimeType string
@@ -44,14 +49,14 @@ type Document struct {
 }
 
 type Sticker struct {
-	FileId        string
+	FileId        string `json:"file_id"`
 	Width, Height int
 	Thumb         *PhotoSize
 	FileSize      int
 }
 
 type Video struct {
-	FileId        string
+	FileId        string `json:"file_id"`
 	Width, Height int
 	Duration      int
 	Thumb         *PhotoSize
@@ -61,10 +66,10 @@ type Video struct {
 }
 
 type Contact struct {
-	PhoneNumber string
-	FirstName   string
-	LastName    string
-	UserId      string
+	PhoneNumber string `json:"phone_number"`
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name"`
+	UserId      string `json:"user_id"`
 }
 
 type Location struct {
@@ -95,13 +100,13 @@ type ForceReply struct {
 }
 
 type Message struct {
-	MessageId           int
+	MessageId           int `json:"message_id"`
 	From                *User
 	Date                int
 	Chat                *interface{}
-	ForwardFrom         *User
-	ForwardDate         int
-	ReplyToMessage      *Message
+	ForwardFrom         *User    `json:"forward_from"`
+	ForwardDate         int      `json:"forward_date"`
+	ReplyToMessage      *Message `json:"reply_to_message"`
 	Text                string
 	Audio               *Audio
 	Document            *Document
@@ -110,10 +115,10 @@ type Message struct {
 	Video               *Video
 	Contact             *Contact
 	Location            *Location
-	NewChatParticipant  *User
-	LeftChatParticipant *User
-	NewChatTitle        string
-	NewChatPhoto        []PhotoSize
-	DeleteChatPhoto     bool
-	GroupChatCreated    bool
+	NewChatParticipant  *User       `json:"new_chat_participant"`
+	LeftChatParticipant *User       `json:"left_chat_participant"`
+	NewChatTitle        string      `json:"new_chat_title"`
+	NewChatPhoto        []PhotoSize `json:"new_chat_photo"`
+	DeleteChatPhoto     bool        `json:"delete_chat_photo"`
+	GroupChatCreated    bool        `json:"group_chat_crated"`
 }
