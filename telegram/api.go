@@ -42,7 +42,7 @@ func (api *Api) buildUrl(method string, option map[string]string) string {
 /*
 Generic function to make Get request to endpoint
 */
-func (api *Api) Get(method string, option map[string]string) ([]byte, error) {
+func (api *Api) get(method string, option map[string]string) ([]byte, error) {
 	q := url.Values{}
 	for k, v := range option {
 		q.Add(k, v)
@@ -59,7 +59,7 @@ func (api *Api) Get(method string, option map[string]string) ([]byte, error) {
 /*
 Generic function to make Post request to endpoint
 */
-func (api *Api) Post(method string, form map[string]string) ([]byte, error) {
+func (api *Api) post(method string, form map[string]string) ([]byte, error) {
 	q := url.Values{}
 	for k, v := range form {
 		q.Add(k, v)
@@ -72,4 +72,23 @@ func (api *Api) Post(method string, form map[string]string) ([]byte, error) {
 
 	defer response.Body.Close()
 	return ioutil.ReadAll(response.Body)
+}
+
+/*
+Composer API
+*/
+func (api *Api) Get() {
+
+}
+
+func (api *Api) Send() {
+
+}
+
+func (api *Api) Forward() {
+
+}
+
+func (api *Api) Set() {
+
 }

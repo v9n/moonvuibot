@@ -6,7 +6,8 @@ import (
 )
 
 func TestCreateConfig(t *testing.T) {
-	c := NewConfigWithToken("abcxyz")
+	c := NewConfig("abcxyz")
 	assert.Equal(t, c.Token, "abcxyz")
-	assert.Equal(t, c.Endpoint(), "https://api.telegram.org/botabcxyz")
+	assert.Equal(t, c.Endpoint(""), "https://api.telegram.org/botabcxyz")
+	assert.Equal(t, c.Endpoint("method"), "https://api.telegram.org/botabcxyz/method")
 }

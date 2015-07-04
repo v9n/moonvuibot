@@ -14,7 +14,7 @@ These are method which map directly to API. Hopefully I can find a way to elimin
 */
 
 func (api *Api) GetUpdates(handler UpdateHandler, option map[string]string) {
-	jsonData, err := api.Get("getUpdates", option)
+	jsonData, err := api.get("getUpdates", option)
 
 	if nil != err {
 		fmt.Println(err)
@@ -35,7 +35,7 @@ func (api *Api) getWebhook(url string) {
 }
 
 func (api *Api) GetMe() (*User, error) {
-	jsonData, err := api.Get("getMe", nil)
+	jsonData, err := api.get("getMe", nil)
 
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (api *Api) GetMe() (*User, error) {
 }
 
 func (api *Api) SendMessage(form map[string]string) (*Message, error) {
-	jsonData, err := api.Post("sendMessage", form)
+	jsonData, err := api.post("sendMessage", form)
 
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (api *Api) SendMessage(form map[string]string) (*Message, error) {
 }
 
 func (api *Api) SendPhoto(form map[string]string) (*Message, error) {
-	jsonData, err := api.Post("sendPhoto", form)
+	jsonData, err := api.post("sendPhoto", form)
 
 	if err != nil {
 		return nil, err
