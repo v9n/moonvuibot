@@ -18,7 +18,6 @@ func TestGetRequest(t *testing.T) {
 	config := NewConfig("abcxyz", func(c *Config) {
 		c.WithUrl(ts.URL)
 	})
-	fmt.Println(ts.URL)
 
 	api, _ := NewApi(config)
 	q := make(map[string]string)
