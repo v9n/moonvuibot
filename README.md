@@ -2,6 +2,10 @@
 
 A telegram API client implentationa and a bot that uses it
 
+[![wercker
+status](https://app.wercker.com/status/0c494370686732a327599fb1b58b3e52/m
+"wercker
+status")](https://app.wercker.com/project/bykey/0c494370686732a327599fb1b58b3e52)
 
 # API
 
